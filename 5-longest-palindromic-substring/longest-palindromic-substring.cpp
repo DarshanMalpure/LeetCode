@@ -15,7 +15,7 @@ public:
 
         int sp = 0;
         int maxLen = 1;
-        vector<vector<int>> t(1001, vector<int>(1001, -1));
+        vector<vector<int>> t(n, vector<int>(n+1, -1));
         for (int i = 0; i < n; i++) {
             for (int j = i; j < n; j++) {
                 if (solve(s, i, j, t) && j - i + 1 > maxLen) {
