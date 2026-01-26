@@ -4,15 +4,27 @@ public:
         int n=nums.size();
         if(k<=1) return 0;
         int count=0;
-        for(int i=0;i<n;i++){
-            if(nums[i]<k) count++;
-            int mul=1;
-            mul*=nums[i];
-            for(int j=i+1;j<n;j++){
-                mul*=nums[j];
-                if(mul<k) count++;
-                else break;
+        // for(int i=0;i<n;i++){
+        //     if(nums[i]<k) count++;
+        //     int mul=1;
+        //     mul*=nums[i];
+        //     for(int j=i+1;j<n;j++){
+        //         mul*=nums[j];
+        //         if(mul<k) count++;
+        //         else break;
+        //     }
+        // }
+        int i=0;
+        int j=0;
+        int mul=1;
+        while(j<n){
+            mul*=nums[j];
+            while(mul>=k){
+                mul=mul/nums[i];
+                i++;
             }
+            count+=j-i+1;
+            j++;
         }
         return count;
     }
